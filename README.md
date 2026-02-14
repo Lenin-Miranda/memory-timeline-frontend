@@ -1,16 +1,61 @@
-# React + Vite
+# Memory Timeline Frontend
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A React application built with Vite for creating memory timelines.
 
-Currently, two official plugins are available:
+## 🚀 Installation and Setup
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Follow these steps to run the project on your local machine:
 
-## React Compiler
+### Prerequisites
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- Node.js (version 16 or higher)
+- npm or yarn
 
-## Expanding the ESLint configuration
+### Installation Steps
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+1. **Clone the repository**
+
+   ```bash
+   git clone <REPOSITORY_URL>
+   cd memory-timeline-frontend
+   ```
+
+2. **Install dependencies**
+
+   ```bash
+   npm install
+   ```
+
+   Or if you use yarn:
+
+   ```bash
+   yarn install
+   ```
+
+3. **Run the project in development mode**
+
+   ```bash
+   npm run dev
+   ```
+
+   Or with yarn:
+
+   ```bash
+   yarn dev
+   ```
+
+4. **Open your browser**
+   Go to `http://localhost:5173` to see the application running.
+
+## 📜 Available Scripts
+
+- `npm run dev` - Runs the application in development mode
+- `npm run build` - Creates the production version
+- `npm run preview` - Previews the production version
+- `npm run lint` - Runs ESLint to check the code
+
+## 🛠️ Technologies Used
+
+- React 18
+- Vite
+- ESLint
