@@ -1,0 +1,123 @@
+.hero {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background-color: #f9ebd8;
+}
+
+.hero__subtitle {
+  font-size: 1.5em;
+  color: #3e3a39;
+  margin: 0;
+  font-family: "Inria Serif", serif;
+  text-align: center;
+  background-color: #fff;
+  padding: 0.5rem 0;
+  width: 100%;
+}
+
+.hero__container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  flex: 1;
+}
+
+.hero__container:first-child {
+  margin: 10px 0;
+}
+
+.hero__container-content {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.hero__container-content:first-child {
+  width: 30%;
+  justify-content: center;
+}
+
+.hero__container-content:last-child {
+  width: 60%;
+  justify-content: center;
+}
+
+.hero__container-content-title {
+  font-family: "Inter", sans-serif;
+  color: #c75b13;
+  max-width: 488px;
+  font-weight: 600;
+  font-size: 6em;
+  line-height: 1.2;
+  padding-left: 3rem;
+  margin: 0;
+}
+
+.hero__container-content-description {
+  font-family: "Italianno", cursive;
+  font-weight: 400;
+  text-align: center;
+  background-color: #fff;
+  font-size: 4rem;
+  margin: 0;
+  position: relative;
+  top: -40px;
+}
+
+.hero__image-container {
+  position: relative;
+  overflow: hidden;
+  border-radius: 12px;
+  width: 100%;
+  height: 500px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero__container-content-image {
+  width: 100%;
+  padding: 1rem;
+  object-fit: cover;
+  display: block;
+  transition: opacity 0.8s ease-in-out, transform 0.8s ease-in-out;
+  border-radius: 12px;
+  animation: fadeInScale 0.8s ease-in-out;
+}
+
+@keyframes fadeInScale {
+  0% {
+    opacity: 0;
+    transform: scale(1.05);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@media (max-width: 768px) {
+  .hero__container {
+    flex-direction: column;
+    gap: 1rem;
+    padding: 1rem;
+  }
+
+  .hero__container-content:first-child,
+  .hero__container-content:last-child {
+    width: 100%;
+  }
+
+  .hero__container-content-title {
+    font-size: 3em;
+    padding-left: 1rem;
+    text-align: center;
+  }
+
+  .hero__container-content-description {
+    font-size: 2.5rem;
+    padding: 0.5rem 1rem;
+  }
+}

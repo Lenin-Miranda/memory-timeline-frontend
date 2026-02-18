@@ -10,6 +10,8 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@fontsource/inria-serif": "^5.2.8",
+    "@fontsource/italianno": "^5.2.8",
     "@fontsource/poppins": "^5.2.7",
     "react": "^19.2.0",
     "react-dom": "^19.2.0",
