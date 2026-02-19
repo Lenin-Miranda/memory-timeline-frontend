@@ -2,7 +2,7 @@
 
 A React application built with Vite for creating memory timelines.
 
-## 🚀 Installation and Setup
+## Installation and Setup
 
 Follow these steps to run the project on your local machine:
 
@@ -47,15 +47,19 @@ Follow these steps to run the project on your local machine:
 4. **Open your browser**
    Go to `http://localhost:5173` to see the application running.
 
-## 📜 Available Scripts
+## Available Scripts
 
 - `npm run dev` - Runs the application in development mode
 - `npm run build` - Creates the production version
 - `npm run preview` - Previews the production version
 - `npm run lint` - Runs ESLint to check the code
 
-## 🛠️ Technologies Used
+## Technologies Used
 
 - React 18
 - Vite
 - ESLint
+
+## Design and Figma Files
+
+- [Figma - Team3 Feb CodeJam](https://www.figma.com/design/vs85lkmwHGVVX0uaiq9V8B/Team3_Feb-CodeJam?node-id=307-1427&t=orcu4udRFTgb3fL1-0)
