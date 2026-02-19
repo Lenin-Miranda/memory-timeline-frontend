@@ -38,12 +38,12 @@
 }
 
 .nav__link:hover {
-  background-color: rgba(100, 108, 255, 0.1);
-  color: #646cff;
+  background-color: #f9ebd8;
+  color: #1a1a1a;
 }
 
 .nav__link.active {
-  color: #646cff;
+  color: #f5d5a8;
   font-weight: 600;
 }
 

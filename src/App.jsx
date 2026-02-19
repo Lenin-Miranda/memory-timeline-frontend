@@ -5,6 +5,7 @@ import NavBar from "./components/NavBar/NavBar";
 import Hero from "./components/hero/Hero";
 import CardAnimation from "./components/CardAnimation/CardAnimation";
 import "./App.css";
+import Plans from "./components/Plans/Plans";
 
 function App() {
   const [count, setCount] = useState(0);
@@ -13,6 +14,7 @@ function App() {
     <>
       <NavBar />
       <Hero />
+      <Plans />
     </>
   );
 }
