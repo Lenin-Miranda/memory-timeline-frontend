@@ -41,7 +41,7 @@
 
 .hero__container-content:last-child {
   width: 60%;
-  justify-content: center;
+  align-items: center;
 }
 
 .hero__container-content-title {
@@ -63,7 +63,8 @@
   font-size: 4rem;
   margin: 0;
   position: relative;
-  top: -40px;
+  top: -70px;
+  width: 790px;
 }
 
 .hero__image-container {

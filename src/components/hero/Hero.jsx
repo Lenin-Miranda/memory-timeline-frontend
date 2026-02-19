@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import "./Hero.css";
+import CardAnimation from "../CardAnimation/CardAnimation";
 
 export default function Hero() {
   return (
@@ -18,7 +19,7 @@ export default function Hero() {
         </div>
         <div className="hero__container-content">
           <div className="hero__image-container">
-            <img className="hero__container-content-image" />
+            <CardAnimation />
           </div>
           <p className="hero__container-content-description">
             Every Memory Has a Story
