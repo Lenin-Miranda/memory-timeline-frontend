@@ -1,21 +1,44 @@
 import { useState } from "react";
-import reactLogo from "./assets/react.svg";
-import viteLogo from "/vite.svg";
 import NavBar from "./components/NavBar/NavBar";
 import Hero from "./components/hero/Hero";
-import CardAnimation from "./components/CardAnimation/CardAnimation";
-import "./App.css";
 import Plans from "./components/Plans/Plans";
+import Login from "./components/Login/Login";
+import SignUp from "./components/SignUp/SignUp";
+import { AuthProvider } from "./context/AuthContext";
+import "./App.css";
 
 function App() {
-  const [count, setCount] = useState(0);
+  const [loginOpen, setLoginOpen] = useState(false);
+  const [signupOpen, setSignupOpen] = useState(false);
+
+  const openLogin = () => {
+    setSignupOpen(false);
+    setLoginOpen(true);
+  };
+
+  const openSignup = () => {
+    setLoginOpen(false);
+    setSignupOpen(true);
+  };
 
   return (
-    <>
-      <NavBar />
+    <AuthProvider>
+      <NavBar onLoginClick={openLogin} onSignupClick={openSignup} />
       <Hero />
       <Plans />
-    </>
+
+      <Login
+        isOpen={loginOpen}
+        onClose={() => setLoginOpen(false)}
+        onSwitchToSignup={openSignup}
+      />
+
+      <SignUp
+        isOpen={signupOpen}
+        onClose={() => setSignupOpen(false)}
+        onSwitchToLogin={openLogin}
+      />
+    </AuthProvider>
   );
 }
 
