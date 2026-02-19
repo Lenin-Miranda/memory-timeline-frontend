@@ -3,7 +3,10 @@ import NavBar from "./components/NavBar/NavBar";
 import Hero from "./components/hero/Hero";
 import Plans from "./components/Plans/Plans";
 import About from "./pages/About/About";
+import Dashboard from "./pages/Dashboard/Dashboard";
+import Steps from "./components/Steps/Steps";
 import Footer from "./components/Footer/Footer";
+
 import "./App.css";
 
 function App() {
@@ -17,10 +20,12 @@ function App() {
             <>
               <Hero />
               <Plans />
+              <Steps />
             </>
           }
         />
         <Route path="/about" element={<About />} />
+        <Route path="/dashboard" element={<Dashboard />} />
       </Routes>
       <Footer />
     </BrowserRouter>
