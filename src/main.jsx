@@ -16,6 +16,9 @@ import "@fontsource/poppins/900.css";
 import "@fontsource/inria-serif/300.css";
 import "@fontsource/inria-serif/400.css";
 import "@fontsource/inria-serif/700.css";
+import "@fontsource/inria-serif/300-italic.css";
+import "@fontsource/inria-serif/400-italic.css";
+import "@fontsource/inria-serif/700-italic.css";
 
 // Importando Italianno
 import "@fontsource/italianno/400.css";
