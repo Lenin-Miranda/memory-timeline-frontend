@@ -1,10 +1,15 @@
 import { useState, useEffect } from "react";
 import "./Dashboard.css";
 import test from "../../assets/cardtest.png";
+import { CreateTimelineModal } from "../../components/Modal";
 
 export default function Dashboard() {
   const [currentCard, setCurrentCard] = useState(0);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
+  function openModal() {
+    setIsModalOpen((prev) => !prev);
+  }
   const cards = [
     {
       id: 1,
@@ -126,8 +131,11 @@ export default function Dashboard() {
           </div>
         </div>
 
-        <button className="dashboard__container-button">Add Timeline</button>
+        <button className="dashboard__container-button" onClick={openModal}>
+          Add Timeline
+        </button>
       </div>
+      <CreateTimelineModal isOpen={isModalOpen} onClose={openModal} />
     </section>
   );
 }

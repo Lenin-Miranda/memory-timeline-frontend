@@ -6,29 +6,31 @@ import About from "./pages/About/About";
 import Dashboard from "./pages/Dashboard/Dashboard";
 import Steps from "./components/Steps/Steps";
 import Footer from "./components/Footer/Footer";
-
+import { TimelineProvider } from "./contexts/TimelineContext";
 import "./App.css";
 
 function App() {
   return (
-    <BrowserRouter>
-      <NavBar />
-      <Routes>
-        <Route
-          path="/"
-          element={
-            <>
-              <Hero />
-              <Plans />
-              <Steps />
-            </>
-          }
-        />
-        <Route path="/about" element={<About />} />
-        <Route path="/dashboard" element={<Dashboard />} />
-      </Routes>
-      <Footer />
-    </BrowserRouter>
+    <TimelineProvider>
+      <BrowserRouter>
+        <NavBar />
+        <Routes>
+          <Route
+            path="/"
+            element={
+              <>
+                <Hero />
+                <Plans />
+                <Steps />
+              </>
+            }
+          />
+          <Route path="/about" element={<About />} />
+          <Route path="/dashboard" element={<Dashboard />} />
+        </Routes>
+        <Footer />
+      </BrowserRouter>
+    </TimelineProvider>
   );
 }
 
