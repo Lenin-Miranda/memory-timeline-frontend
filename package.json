@@ -13,8 +13,10 @@
     "@fontsource/inria-serif": "^5.2.8",
     "@fontsource/italianno": "^5.2.8",
     "@fontsource/poppins": "^5.2.7",
+    "axios": "^1.13.5",
     "react": "^19.2.0",
     "react-dom": "^19.2.0",
+    "react-router-dom": "^7.13.0",
     "react-scroll": "^1.9.3"
   },
   "devDependencies": {
