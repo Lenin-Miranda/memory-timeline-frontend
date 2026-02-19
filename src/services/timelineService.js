@@ -1,5 +1,4 @@
-const API_BASE_URL =
-  import.meta.env.VITE_API_URL || "http://localhost:3001/api";
+const API_BASE_URL = import.meta.env.VITE_API_URL || "http://localhost:3001";
 
 const getAuthHeaders = () => {
   const token = localStorage.getItem("token");
@@ -11,7 +10,7 @@ const getAuthHeaders = () => {
 
 export const timelineService = {
   async getTimelines() {
-    const response = await fetch(`${API_BASE_URL}/timelines`, {
+    const response = await fetch(`${API_BASE_URL}/api/timelines`, {
       headers: getAuthHeaders(),
     });
     if (!response.ok) {
@@ -22,7 +21,7 @@ export const timelineService = {
   },
 
   async getTimelineById(id) {
-    const response = await fetch(`${API_BASE_URL}/timelines/${id}`, {
+    const response = await fetch(`${API_BASE_URL}/api/timelines/${id}`, {
       headers: getAuthHeaders(),
     });
     if (!response.ok) {
@@ -33,7 +32,7 @@ export const timelineService = {
   },
 
   async createTimeline(timelineData) {
-    const response = await fetch(`${API_BASE_URL}/timelines`, {
+    const response = await fetch(`${API_BASE_URL}/api/timelines`, {
       method: "POST",
       headers: getAuthHeaders(),
       body: JSON.stringify(timelineData),
@@ -46,7 +45,7 @@ export const timelineService = {
   },
 
   async updateTimeline(id, timelineData) {
-    const response = await fetch(`${API_BASE_URL}/timelines/${id}`, {
+    const response = await fetch(`${API_BASE_URL}/api/timelines/${id}`, {
       method: "PATCH",
       headers: getAuthHeaders(),
       body: JSON.stringify(timelineData),
@@ -60,7 +59,7 @@ export const timelineService = {
   },
 
   async deleteTimeline(id) {
-    const response = await fetch(`${API_BASE_URL}/timelines/${id}`, {
+    const response = await fetch(`${API_BASE_URL}/api/timelines/${id}`, {
       method: "DELETE",
       headers: getAuthHeaders(),
     });

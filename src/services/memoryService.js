@@ -1,5 +1,4 @@
-const API_BASE_URL =
-  import.meta.env.VITE_API_URL || "http://localhost:3001/api";
+const API_BASE_URL = import.meta.env.VITE_API_URL || "http://localhost:3001";
 
 const getAuthHeaders = () => {
   const token = localStorage.getItem("token");
@@ -12,7 +11,7 @@ const getAuthHeaders = () => {
 export const memoryService = {
   async getMemoriesByTimeline(timelineId) {
     const response = await fetch(
-      `${API_BASE_URL}/timelines/${timelineId}/memories`,
+      `${API_BASE_URL}/api/timelines/${timelineId}/memories`,
       {
         headers: getAuthHeaders(),
       },
@@ -25,7 +24,7 @@ export const memoryService = {
   },
 
   async getMemoryById(id) {
-    const response = await fetch(`${API_BASE_URL}/memories/${id}`, {
+    const response = await fetch(`${API_BASE_URL}/api/memories/${id}`, {
       headers: getAuthHeaders(),
     });
     if (!response.ok) {
@@ -37,7 +36,7 @@ export const memoryService = {
 
   async createMemory(timelineId, memoryData) {
     const response = await fetch(
-      `${API_BASE_URL}/timelines/${timelineId}/memories`,
+      `${API_BASE_URL}/api/timelines/${timelineId}/memories`,
       {
         method: "POST",
         headers: getAuthHeaders(),
@@ -53,7 +52,7 @@ export const memoryService = {
   },
 
   async updateMemory(id, memoryData) {
-    const response = await fetch(`${API_BASE_URL}/memories/${id}`, {
+    const response = await fetch(`${API_BASE_URL}/api/memories/${id}`, {
       method: "PATCH",
       headers: getAuthHeaders(),
       body: JSON.stringify(memoryData),
@@ -67,7 +66,7 @@ export const memoryService = {
   },
 
   async deleteMemory(id) {
-    const response = await fetch(`${API_BASE_URL}/memories/${id}`, {
+    const response = await fetch(`${API_BASE_URL}/api/memories/${id}`, {
       method: "DELETE",
       headers: getAuthHeaders(),
     });
