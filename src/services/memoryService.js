@@ -1,10 +1,21 @@
 const API_BASE_URL =
   import.meta.env.VITE_API_URL || "http://localhost:3001/api";
 
+const getAuthHeaders = () => {
+  const token = localStorage.getItem("token");
+  return {
+    "Content-Type": "application/json",
+    ...(token && { Authorization: `Bearer ${token}` }),
+  };
+};
+
 export const memoryService = {
   async getMemoriesByTimeline(timelineId) {
     const response = await fetch(
       `${API_BASE_URL}/timelines/${timelineId}/memories`,
+      {
+        headers: getAuthHeaders(),
+      },
     );
     if (!response.ok) {
       const errorData = await response.json().catch(() => ({}));
@@ -14,7 +25,9 @@ export const memoryService = {
   },
 
   async getMemoryById(id) {
-    const response = await fetch(`${API_BASE_URL}/memories/${id}`);
+    const response = await fetch(`${API_BASE_URL}/memories/${id}`, {
+      headers: getAuthHeaders(),
+    });
     if (!response.ok) {
       const errorData = await response.json().catch(() => ({}));
       throw new Error(errorData.message || "Memory not found");
@@ -27,9 +40,7 @@ export const memoryService = {
       `${API_BASE_URL}/timelines/${timelineId}/memories`,
       {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
+        headers: getAuthHeaders(),
         body: JSON.stringify(memoryData),
       },
     );
@@ -44,9 +55,7 @@ export const memoryService = {
   async updateMemory(id, memoryData) {
     const response = await fetch(`${API_BASE_URL}/memories/${id}`, {
       method: "PATCH",
-      headers: {
-        "Content-Type": "application/json",
-      },
+      headers: getAuthHeaders(),
       body: JSON.stringify(memoryData),
     });
     if (!response.ok) {
@@ -60,6 +69,7 @@ export const memoryService = {
   async deleteMemory(id) {
     const response = await fetch(`${API_BASE_URL}/memories/${id}`, {
       method: "DELETE",
+      headers: getAuthHeaders(),
     });
     if (!response.ok) {
       const errorData = await response.json().catch(() => ({}));

@@ -63,8 +63,13 @@ export const TimelineProvider = ({ children }) => {
   const fetchTimelines = useCallback(async () => {
     dispatch({ type: "SET_LOADING", payload: true });
     try {
-      const timelines = await timelineService.getTimelines();
-      dispatch({ type: "SET_TIMELINES", payload: timelines });
+      const response = await timelineService.getTimelines();
+      // Manejar si la respuesta es { timelines: [...] } o directamente [...]
+      const timelines = response.timelines || response;
+      dispatch({
+        type: "SET_TIMELINES",
+        payload: Array.isArray(timelines) ? timelines : [],
+      });
     } catch (error) {
       dispatch({ type: "SET_ERROR", payload: error.message });
     }
@@ -83,7 +88,9 @@ export const TimelineProvider = ({ children }) => {
   const createTimeline = useCallback(async (timelineData) => {
     dispatch({ type: "SET_LOADING", payload: true });
     try {
-      const newTimeline = await timelineService.createTimeline(timelineData);
+      const response = await timelineService.createTimeline(timelineData);
+      // Manejar si la respuesta es { timeline: {...} } o directamente {...}
+      const newTimeline = response.timeline || response;
       dispatch({ type: "ADD_TIMELINE", payload: newTimeline });
       return newTimeline;
     } catch (error) {

@@ -1,9 +1,19 @@
 const API_BASE_URL =
   import.meta.env.VITE_API_URL || "http://localhost:3001/api";
 
+const getAuthHeaders = () => {
+  const token = localStorage.getItem("token");
+  return {
+    "Content-Type": "application/json",
+    ...(token && { Authorization: `Bearer ${token}` }),
+  };
+};
+
 export const timelineService = {
   async getTimelines() {
-    const response = await fetch(`${API_BASE_URL}/timelines`);
+    const response = await fetch(`${API_BASE_URL}/timelines`, {
+      headers: getAuthHeaders(),
+    });
     if (!response.ok) {
       const errorData = await response.json().catch(() => ({}));
       throw new Error(errorData.message || "Error fetching timelines");
@@ -12,7 +22,9 @@ export const timelineService = {
   },
 
   async getTimelineById(id) {
-    const response = await fetch(`${API_BASE_URL}/timelines/${id}`);
+    const response = await fetch(`${API_BASE_URL}/timelines/${id}`, {
+      headers: getAuthHeaders(),
+    });
     if (!response.ok) {
       const errorData = await response.json().catch(() => ({}));
       throw new Error(errorData.message || "Timeline not found");
@@ -23,9 +35,7 @@ export const timelineService = {
   async createTimeline(timelineData) {
     const response = await fetch(`${API_BASE_URL}/timelines`, {
       method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
+      headers: getAuthHeaders(),
       body: JSON.stringify(timelineData),
     });
     if (!response.ok) {
@@ -38,9 +48,7 @@ export const timelineService = {
   async updateTimeline(id, timelineData) {
     const response = await fetch(`${API_BASE_URL}/timelines/${id}`, {
       method: "PATCH",
-      headers: {
-        "Content-Type": "application/json",
-      },
+      headers: getAuthHeaders(),
       body: JSON.stringify(timelineData),
     });
     if (!response.ok) {
@@ -54,6 +62,7 @@ export const timelineService = {
   async deleteTimeline(id) {
     const response = await fetch(`${API_BASE_URL}/timelines/${id}`, {
       method: "DELETE",
+      headers: getAuthHeaders(),
     });
     if (!response.ok) {
       const errorData = await response.json().catch(() => ({}));

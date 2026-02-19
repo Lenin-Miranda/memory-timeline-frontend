@@ -63,8 +63,13 @@ export const MemoryProvider = ({ children }) => {
   const fetchMemoriesByTimeline = useCallback(async (timelineId) => {
     dispatch({ type: "SET_LOADING", payload: true });
     try {
-      const memories = await memoryService.getMemoriesByTimeline(timelineId);
-      dispatch({ type: "SET_MEMORIES", payload: memories });
+      const response = await memoryService.getMemoriesByTimeline(timelineId);
+      // Manejar si la respuesta es { memories: [...] } o directamente [...]
+      const memories = response.memories || response;
+      dispatch({
+        type: "SET_MEMORIES",
+        payload: Array.isArray(memories) ? memories : [],
+      });
     } catch (error) {
       dispatch({ type: "SET_ERROR", payload: error.message });
     }
@@ -73,7 +78,8 @@ export const MemoryProvider = ({ children }) => {
   const fetchMemoryById = useCallback(async (id) => {
     dispatch({ type: "SET_LOADING", payload: true });
     try {
-      const memory = await memoryService.getMemoryById(id);
+      const response = await memoryService.getMemoryById(id);
+      const memory = response.memory || response;
       dispatch({ type: "SET_CURRENT_MEMORY", payload: memory });
     } catch (error) {
       dispatch({ type: "SET_ERROR", payload: error.message });
@@ -83,10 +89,9 @@ export const MemoryProvider = ({ children }) => {
   const createMemory = useCallback(async (timelineId, memoryData) => {
     dispatch({ type: "SET_LOADING", payload: true });
     try {
-      const newMemory = await memoryService.createMemory(
-        timelineId,
-        memoryData,
-      );
+      const response = await memoryService.createMemory(timelineId, memoryData);
+      // Manejar si la respuesta es { memory: {...} } o directamente {...}
+      const newMemory = response.memory || response;
       dispatch({ type: "ADD_MEMORY", payload: newMemory });
       return newMemory;
     } catch (error) {
