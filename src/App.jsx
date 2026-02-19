@@ -1,10 +1,16 @@
-import { useState } from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import NavBar from "./components/NavBar/NavBar";
-import Hero from "./components/hero/Hero";
-import Plans from "./components/Plans/Plans";
 import Login from "./components/Login/Login";
 import SignUp from "./components/SignUp/SignUp";
 import { AuthProvider } from "./context/AuthContext";
+import { useState } from "react";
+import Hero from "./components/hero/Hero";
+import Plans from "./components/Plans/Plans";
+import About from "./pages/About/About";
+import Dashboard from "./pages/Dashboard/Dashboard";
+import Steps from "./components/Steps/Steps";
+import Footer from "./components/Footer/Footer";
+import { TimelineProvider } from "./contexts/TimelineContext";
 import "./App.css";
 
 function App() {
@@ -20,9 +26,25 @@ function App() {
     setLoginOpen(false);
     setSignupOpen(true);
   };
-
   return (
-    <AuthProvider>
+    <TimelineProvider>
+      <BrowserRouter>
+        <NavBar />
+        <Routes>
+          <Route
+            path="/"
+            element={
+              <>
+                <Hero />
+                <Plans />
+                <Steps />
+              </>
+            }
+          />
+          <Route path="/about" element={<About />} />
+          <Route path="/dashboard" element={<Dashboard />} />
+        </Routes>
+ <AuthProvider>
       <NavBar onLoginClick={openLogin} onSignupClick={openSignup} />
       <Hero />
       <Plans />
@@ -39,6 +61,9 @@ function App() {
         onSwitchToLogin={openLogin}
       />
     </AuthProvider>
+        <Footer />
+      </BrowserRouter>
+    </TimelineProvider>
   );
 }
 
