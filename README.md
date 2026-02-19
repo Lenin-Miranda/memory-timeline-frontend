@@ -1,10 +1,16 @@
 # Memory Timeline Frontend
 
-A React application built with Vite for creating memory timelines.
+A React application for creating and managing memory timelines with friends and loved ones.
+
+## Features
+
+- 🔐 User authentication (Login/Signup)
+- 📅 Create timelines for different relationships
+- 💭 Add memories with text, dates, and images
+- 🎨 Beautiful carousel interface
+- 📱 Responsive design
 
 ## Installation and Setup
-
-Follow these steps to run the project on your local machine:
 
 ### Prerequisites
 
@@ -26,26 +32,31 @@ Follow these steps to run the project on your local machine:
    npm install
    ```
 
-   Or if you use yarn:
+3. **Configure environment variables**
+
+   Create a `.env` file in the root directory:
 
    ```bash
-   yarn install
+   VITE_API_URL=http://localhost:3001/api
    ```
 
-3. **Run the project in development mode**
+4. **Run the project in development mode**
 
    ```bash
    npm run dev
    ```
 
-   Or with yarn:
+5. **Open your browser**
 
-   ```bash
-   yarn dev
-   ```
+   Go to `http://localhost:3000` to see the application running.
 
-4. **Open your browser**
-   Go to `http://localhost:5173` to see the application running.
+## Usage
+
+1. **Sign up** or **Log in** to your account
+2. Click **Add Timeline** to create a new friendship timeline
+3. Click on a timeline card to view its memories
+4. Click **Add Memory** to create new memories with text, date, and optional image URL
+5. Navigate back to view all your timelines
 
 ## Available Scripts
 
@@ -58,7 +69,9 @@ Follow these steps to run the project on your local machine:
 
 - React 18
 - Vite
-- ESLint
+- React Router
+- Context API for state management
+- CSS3 for styling
 
 ## Design and Figma Files
 
