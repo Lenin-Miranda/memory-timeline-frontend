@@ -1,0 +1,9 @@
+.page {
+  background-color: #f9ebd8;
+}
+
+.page-content {
+  max-width: 1,440px;
+  margin: 0 auto;
+  min-height: 100vh;
+}
