@@ -1,78 +1,60 @@
 # Memory Timeline Frontend
 
-A React application for creating and managing memory timelines with friends and loved ones.
+React 19 application for organizing memories into personal timelines, with account forms, timeline creation and dated memories with optional image URLs.
 
-## Features
+**Backend:** [memory-timeline-backend-](https://github.com/Lenin-Miranda/memory-timeline-backend-).
 
-- 🔐 User authentication (Login/Signup)
-- 📅 Create timelines for different relationships
-- 💭 Add memories with text, dates, and images
-- 🎨 Beautiful carousel interface
-- 📱 Responsive design
+## Setup
 
-## Installation and Setup
+Use Node.js 22.12+ and npm for the Vite 7 toolchain.
 
-### Prerequisites
+```bash
+git clone https://github.com/Lenin-Miranda/memory-timeline-frontend.git
+cd memory-timeline-frontend
+npm install
+cp .env.example .env
+```
 
-- Node.js (version 16 or higher)
-- npm or yarn
+Set the backend origin in `.env`:
 
-### Installation Steps
+```dotenv
+VITE_API_URL=http://localhost:3001
+```
 
-1. **Clone the repository**
+Do not append `/api`: the request helpers add route prefixes themselves.
 
-   ```bash
-   git clone <REPOSITORY_URL>
-   cd memory-timeline-frontend
-   ```
+```bash
+npm run dev
+```
 
-2. **Install dependencies**
-
-   ```bash
-   npm install
-   ```
-
-3. **Configure environment variables**
-
-   Create a `.env` file in the root directory:
-
-   ```bash
-   VITE_API_URL=http://localhost:3001/api
-   ```
-
-4. **Run the project in development mode**
-
-   ```bash
-   npm run dev
-   ```
-
-5. **Open your browser**
-
-   Go to `http://localhost:3000` to see the application running.
+Open the URL printed by Vite, configured as `http://localhost:3000` in `vite.config.js`. Start the backend separately.
 
 ## Usage
 
-1. **Sign up** or **Log in** to your account
-2. Click **Add Timeline** to create a new friendship timeline
-3. Click on a timeline card to view its memories
-4. Click **Add Memory** to create new memories with text, date, and optional image URL
-5. Navigate back to view all your timelines
+1. Sign up or log in.
+2. Create a timeline for a relationship.
+3. Open the timeline and add a memory with a date, description and optional image URL.
+4. Navigate back to the timeline dashboard.
 
-## Available Scripts
+## Commands
 
-- `npm run dev` - Runs the application in development mode
-- `npm run build` - Creates the production version
-- `npm run preview` - Previews the production version
-- `npm run lint` - Runs ESLint to check the code
+- `npm run dev`: local development.
+- `npm run lint`: ESLint.
+- `npm run build`: production output in `dist/`.
+- `npm run preview`: local preview of the build.
 
-## Technologies Used
+## Structure
 
-- React 18
-- Vite
-- React Router
-- Context API for state management
-- CSS3 for styling
+- `src/components/`: forms, modals and shared UI.
+- `src/pages/`: landing/about/dashboard pages.
+- `src/context/` and `src/contexts/`: authentication and app state.
+- `src/services/`: API requests.
+- `src/hooks/` and `src/utils/`: reusable behavior and validation.
 
-## Design and Figma Files
+## Design
 
-- [Figma - Team3 Feb CodeJam](https://www.figma.com/design/vs85lkmwHGVVX0uaiq9V8B/Team3_Feb-CodeJam?node-id=307-1427&t=orcu4udRFTgb3fL1-0)
+[Figma — Team3 Feb CodeJam](https://www.figma.com/design/vs85lkmwHGVVX0uaiq9V8B/Team3_Feb-CodeJam?node-id=307-1427)
+
+## Troubleshooting
+
+Check the backend port and remove a trailing `/api` from `VITE_API_URL` if requests reach duplicated paths. Restart Vite after changing the environment. No automated test script is configured.
